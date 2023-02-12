@@ -4,7 +4,8 @@ import {Contacts } from "./Contacts/Contacts";
 import {InputFilter} from "./InputFilter/InputFilter";
 import {Container,Title} from "./App.styled";
 import { useDispatch, useSelector } from "react-redux";
-import { usersAddAction, usersDeleteAction, usersSearchAction } from "redux/users/users.action";
+import { usersSearchAction,usersAddAction, usersDeleteAction,} from "redux/users/users.slice";
+// import { usersAddAction, usersDeleteAction, usersSearchAction } from "redux/users/users.action";
 
 export const App = () => {
   const filter = useSelector(state => state.users.search)
@@ -12,8 +13,13 @@ export const App = () => {
 
   const dispatch = useDispatch()
 
+  // const [contacts, setContacts] = useState([
+  //   {id: 'id-1', name: 'Rosie Simpson', telephone: '459-12-56'},
+  // ]);
+
   const deleteFromContacts = (contactToDelete) => {
     dispatch(usersDeleteAction(contactToDelete))
+    // setContacts(deletedList);
   };
   
   const checkIsInContacts = (value) => {
@@ -21,7 +27,6 @@ export const App = () => {
   };
   
   const addFilter = (value) => {
-    console.log(contacts.map(c => console.log(c)));
     dispatch(usersSearchAction(`${value}`))
   };
   
@@ -37,13 +42,15 @@ export const App = () => {
       telephone,
     };
     dispatch(usersAddAction(contact))
-    
+    // setContacts(prev => [...prev, contact]);
   };
   
   const contactsFilter = () => {
+    
     const filtered = contacts.filter(contact =>
       contact.name.toLowerCase().trim().includes(filter.toLowerCase().trim())
     );
+    
     return filtered;
   };
   

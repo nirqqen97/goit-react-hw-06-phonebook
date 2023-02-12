@@ -1,6 +1,7 @@
-import {createStore, combineReducers} from 'redux';
-import { userReducer } from './users/users.reducer';
+// import { userReducer } from './users/users.reducer';
 import {initUsersState} from "./users/users.init-state";
+import {configureStore, combineReducers } from "@reduxjs/toolkit";
+import { userReducer } from "./users/users.slice";
 
 const initState = {
     users:initUsersState
@@ -9,6 +10,8 @@ const initState = {
 const rootReducer = combineReducers({
     users: userReducer
 })
-const reducer = (state = 0, action) => state
 
-export const store = createStore(rootReducer,initState)
+export const store = configureStore({
+    reducer:rootReducer,
+    devTools: true,
+    preloadedState: initState,})
