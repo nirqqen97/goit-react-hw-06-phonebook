@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-
 import {initUsersState} from "./users.init-state";
 
-export const usersSlice = () => createSlice({
+export const usersSlice = createSlice({
+    
     name : 'users',
     initialState: initUsersState,
     reducers : {
@@ -19,9 +19,11 @@ export const usersSlice = () => createSlice({
     }
 })
 
-export const userReducer = usersSlice.reducers;
-
+export const userReducer = usersSlice.reducer;
 export const {usersSearchAction,usersDeleteAction,usersAddAction} = usersSlice.actions;
+
+
+
 
 
 

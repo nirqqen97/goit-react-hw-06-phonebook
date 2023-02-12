@@ -4,7 +4,7 @@ import {Contacts } from "./Contacts/Contacts";
 import {InputFilter} from "./InputFilter/InputFilter";
 import {Container,Title} from "./App.styled";
 import { useDispatch, useSelector } from "react-redux";
-import { usersSearchAction,usersAddAction, usersDeleteAction,} from "redux/users/users.slice";
+import { usersSearchAction,usersAddAction, usersDeleteAction} from "redux/users/users.slice";
 // import { usersAddAction, usersDeleteAction, usersSearchAction } from "redux/users/users.action";
 
 export const App = () => {
