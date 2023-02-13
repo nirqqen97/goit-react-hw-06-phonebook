@@ -1,21 +1,14 @@
 // import { userReducer } from './users/users.reducer';
-import { persistStore, persistReducer,FLUSH,
+import { persistStore,FLUSH,
     REHYDRATE,
     PAUSE,
     PERSIST,
     PURGE,
     REGISTER,} from 'redux-persist'
-import storage from 'redux-persist/lib/storage'
+// import storage from 'redux-persist/lib/storage'
 import {configureStore, combineReducers } from "@reduxjs/toolkit";
 import {initUsersState} from "./users/users.init-state";
 import {userReducer} from "./users/users.slice";
-
-const persistConfig = {
-    key: 'root',
-    storage,
-    whitelist : ["data"]
-  }
-   
 const initState = {
     users:initUsersState
 }
@@ -23,11 +16,17 @@ const initState = {
 const rootReducer = combineReducers({
     users: userReducer
 })
-const persistedReducer = persistReducer(persistConfig, rootReducer)
+// const persistConfig = {
+//     key: 'root',
+//     storage,
+//     whitelist : ["data"]
+//   }
+   
+// const persistedReducer = persistReducer(persistConfig, rootReducer)
 
 
 export const store = configureStore({
-    reducer: persistedReducer,
+    reducer: rootReducer,
     devTools: true,
     preloadedState: initState,
     middleware: (getDefaultMiddleware) =>
