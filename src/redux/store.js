@@ -13,6 +13,7 @@ import {userReducer} from "./users/users.slice";
 const persistConfig = {
     key: 'root',
     storage,
+    whitelist : ["data"]
   }
    
 const initState = {
